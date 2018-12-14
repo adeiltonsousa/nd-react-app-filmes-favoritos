@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import logo from './logo.svg';
-import ListUsers from './ListUsers';
-import ListProfiles from './ListProfiles';
-import ListMovies from './ListMovies'
+import React, { Component } from 'react'
+import './App.css'
+import logo from './logo.svg'
+import ListFrase from './ListFrase'
 
 /*
 Use React and the data below to display a list of users alongside their favorite movies.
@@ -100,6 +98,19 @@ const movies = {
   },
 };
 
+var frases = ( profiles.map(function(item, index) { 
+    let nome = users[item.userID].name;
+    let id = users[item.userID].id;
+    let filme = movies[item.favoriteMovieID].name;  	
+  	var frasepronta = (nome + ', favorite movie is ' + filme);
+	console.log(frasepronta);
+  	return frasepronta;  
+	}                
+	)
+)
+
+console.log(frases);
+
 class App extends Component {
   render() {
     return (
@@ -108,9 +119,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <ListProfiles profiles={profiles}/>
-		<ListUsers users={users}/>
-		<ListMovies movies={movies}/>
+		<ListFrase frases={frases} />
       </div>
     );
   }
